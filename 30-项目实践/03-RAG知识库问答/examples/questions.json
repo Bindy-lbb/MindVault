@@ -1,0 +1,8 @@
+[
+  {"question":"API 密钥放在环境变量中吗？", "expected_sources":["01-API配置.md"]},
+  {"question":"Token 用量如何核对？", "expected_sources":["02-Token记录.md"]},
+  {"question":"硬盘文件会自动进入上下文吗？", "expected_sources":["03-上下文笔记.md"]},
+  {"question":"JSON 格式正确是否说明事实正确？", "expected_sources":["04-JSON核对.md"]},
+  {"question":"复习实验应该怎样比较参数？", "expected_sources":["05-复习流程.md"]},
+  {"question":"土星光环倾角多少？", "expected_sources":[]}
+]

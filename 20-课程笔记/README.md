@@ -6,6 +6,7 @@
 
 - [第一阶段：线上课程与阅读顺序](第一阶段-线上课程与阅读顺序.md)：按 Python 官方教程、CS50P 补充基础，再衔接 Datawhale。
 - [第二阶段：模型 API 课程与实践顺序](第二阶段-模型API课程与实践顺序.md)：参考 Datawhale、DeepSeek 和 MDN，学习首次调用与文章整理。
+- [第三阶段：RAG 课程与实践顺序](第三阶段-RAG课程与实践顺序.md)：参考 Datawhale、LlamaIndex 和 Sentence Transformers，从本地检索走向带引用问答。
 
 ## 如何记录
 
