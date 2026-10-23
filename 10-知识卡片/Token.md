@@ -59,6 +59,12 @@ tags:
 - [ ] 到模型调用阶段，用同一模型的计数工具分别检查两段文本，记下模型名、文本与实际数量。
 - [ ] 修改提示词后比较一次输入用量，观察额外的要求是否增加了 Token。
 
+## 自测与参考答案
+
+**问题：**两段文字各有 1000 个字符，它们的 Token 数一定相同吗？
+
+**参考要点：**不一定，数量还取决于文本内容和目标模型的分词方式。实际结果要用对应的分词器或计数接口确认。
+
 ## 来源
 
 - [Hugging Face：Tokenization algorithms](https://huggingface.co/docs/transformers/en/tokenizer_summary)，用于分词与切分差异。
