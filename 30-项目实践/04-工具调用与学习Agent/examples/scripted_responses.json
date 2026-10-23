@@ -1,0 +1,388 @@
+{
+  "success": [
+    {
+      "id": "offline-s1",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_s1",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-s2",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_s2",
+                "type": "function",
+                "function": {
+                  "name": "read_note",
+                  "arguments": "{\"note_id\":\"01-API配置.md\",\"start_line\":1,\"end_line\":8}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-s3",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"status\":\"ok\",\"items\":[{\"question\":\"API 密钥建议保存在哪里？\",\"answer\":\"建议放在本地环境变量中。\",\"note_id\":\"01-API配置.md\",\"quote\":\"API 密钥用于认证调用方，建议放在本地环境变量中。\"}]}"
+          }
+        }
+      ]
+    }
+  ],
+  "bad_arguments": [
+    {
+      "id": "offline-b1",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_b1",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":\"3\"}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-b2",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_b2",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-b3",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_b3",
+                "type": "function",
+                "function": {
+                  "name": "read_note",
+                  "arguments": "{\"note_id\":\"01-API配置.md\",\"start_line\":1,\"end_line\":8}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-b4",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"status\":\"ok\",\"items\":[{\"question\":\"API 密钥建议保存在哪里？\",\"answer\":\"建议放在本地环境变量中。\",\"note_id\":\"01-API配置.md\",\"quote\":\"API 密钥用于认证调用方，建议放在本地环境变量中。\"}]}"
+          }
+        }
+      ]
+    }
+  ],
+  "no_results": [
+    {
+      "id": "offline-n1",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_n1",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"土星光环倾角\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-n2",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"status\":\"insufficient_evidence\",\"items\":[]}"
+          }
+        }
+      ]
+    }
+  ],
+  "loop": [
+    {
+      "id": "offline-loop1",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop1",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop2",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop2",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop3",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop3",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop4",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop4",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop5",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop5",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop6",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop6",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop7",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop7",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "offline-loop8",
+      "model": "scripted-fixture",
+      "usage": null,
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call_loop8",
+                "type": "function",
+                "function": {
+                  "name": "search_notes",
+                  "arguments": "{\"query\":\"API 密钥环境变量\",\"top_k\":3}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
