@@ -1,0 +1,4 @@
+{"id":"validation-01","messages":[{"role":"user","content":"把“环境变量”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：环境变量；一句话：由运行环境提供给程序的命名配置值。"}]}
+{"id":"validation-02","messages":[{"role":"user","content":"把“重试”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：重试；一句话：在确认失败原因与重复执行风险后再次尝试。"}]}
+{"id":"validation-03","messages":[{"role":"user","content":"把“工具调用”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：工具调用；一句话：模型提出参数，由程序校验执行并回传结果。"}]}
+{"id":"validation-04","messages":[{"role":"user","content":"把“训练集”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：训练集；一句话：用于更新模型参数的数据分组。"}]}

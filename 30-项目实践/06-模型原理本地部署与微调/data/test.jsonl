@@ -1,0 +1,4 @@
+{"id":"test-01","messages":[{"role":"user","content":"把“因果掩码”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：因果掩码；一句话：阻止当前位置读取未来 Token 信息的限制。"}]}
+{"id":"test-02","messages":[{"role":"user","content":"把“低秩更新”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：低秩更新；一句话：用较小矩阵的乘积表示权重增量的方法。"}]}
+{"id":"test-03","messages":[{"role":"user","content":"把“健康检查”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：健康检查；一句话：检查服务进程或依赖是否能正常响应的请求。"}]}
+{"id":"test-04","messages":[{"role":"user","content":"把“回滚”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：回滚；一句话：重新运行已经验证过的旧版本以恢复功能。"}]}

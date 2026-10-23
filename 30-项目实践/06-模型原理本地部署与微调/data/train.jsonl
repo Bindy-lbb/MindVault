@@ -1,0 +1,12 @@
+{"id":"train-01","messages":[{"role":"user","content":"把“大模型”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：大模型；一句话：根据输入生成内容的模型。"}]}
+{"id":"train-02","messages":[{"role":"user","content":"把“Token”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：Token；一句话：模型处理文本的基本单位，不固定等于一个汉字。"}]}
+{"id":"train-03","messages":[{"role":"user","content":"把“上下文”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：上下文；一句话：模型本次请求实际获得的信息。"}]}
+{"id":"train-04","messages":[{"role":"user","content":"把“API”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：API；一句话：让程序按约定调用其他软件能力的接口。"}]}
+{"id":"train-05","messages":[{"role":"user","content":"把“提示词”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：提示词；一句话：向模型说明任务、资料与输出要求的输入。"}]}
+{"id":"train-06","messages":[{"role":"user","content":"把“幻觉”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：幻觉；一句话：模型生成了错误或缺少依据的内容。"}]}
+{"id":"train-07","messages":[{"role":"user","content":"把“JSON”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：JSON；一句话：用固定语法表达字段化数据的格式。"}]}
+{"id":"train-08","messages":[{"role":"user","content":"把“函数”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：函数；一句话：接收输入、执行一组步骤并返回结果的代码单元。"}]}
+{"id":"train-09","messages":[{"role":"user","content":"把“关键词检索”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：关键词检索；一句话：根据文字线索查找相关资料的方法。"}]}
+{"id":"train-10","messages":[{"role":"user","content":"把“向量检索”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：向量检索；一句话：通过向量相似度寻找候选内容的方法。"}]}
+{"id":"train-11","messages":[{"role":"user","content":"把“引用”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：引用；一句话：指出结论对应的资料来源和依据。"}]}
+{"id":"train-12","messages":[{"role":"user","content":"把“评估”整理成一句话学习卡片，格式固定为“概念：...；一句话：...”。"},{"role":"assistant","content":"概念：评估；一句话：用固定任务和规则检查系统效果的过程。"}]}
