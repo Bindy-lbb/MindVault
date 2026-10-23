@@ -1,0 +1,10 @@
+[
+  {"id":"dev-api","split":"dev","question":"API 密钥放在环境变量中吗？","expected":[{"path":"01-API配置.md","quote":"API 密钥用于认证调用方，建议放在本地环境变量中。"}]},
+  {"id":"dev-token","split":"dev","question":"Token 用量如何核对？","expected":[{"path":"02-Token记录.md","quote":"程序应该保存接口返回的 usage，用于核对实际用量。"}]},
+  {"id":"dev-json","split":"dev","question":"JSON 格式正确是否说明事实正确？","expected":[{"path":"04-JSON核对.md","quote":"能解析 JSON，只说明语法可读取，不说明事实正确。"}]},
+  {"id":"dev-multi","split":"dev","question":"API 密钥环境变量；JSON 字段事实核对","expected":[{"path":"01-API配置.md","quote":"API 密钥用于认证调用方，建议放在本地环境变量中。"},{"path":"04-JSON核对.md","quote":"检查字段名称、类型和必要内容，再检查引用是否支持结论。"}]},
+  {"id":"dev-unknown","split":"dev","question":"土星光环倾角多少？","expected":[]},
+  {"id":"hold-context","split":"holdout","question":"硬盘文件会自动进入上下文吗？","expected":[{"path":"03-上下文笔记.md","quote":"硬盘上有文件，不代表模型已经读取了那个文件。"}]},
+  {"id":"hold-paraphrase","split":"holdout","question":"钥匙应该存哪儿？","expected":[{"path":"01-API配置.md","quote":"API 密钥用于认证调用方，建议放在本地环境变量中。"}]},
+  {"id":"hold-insufficient","split":"holdout","question":"Token 服务账户余额具体是多少？","expected":[]}
+]

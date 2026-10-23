@@ -8,6 +8,7 @@
 - [第二阶段：模型 API 课程与实践顺序](第二阶段-模型API课程与实践顺序.md)：参考 Datawhale、DeepSeek 和 MDN，学习首次调用与文章整理。
 - [第三阶段：RAG 课程与实践顺序](第三阶段-RAG课程与实践顺序.md)：参考 Datawhale、LlamaIndex 和 Sentence Transformers，从本地检索走向带引用问答。
 - [第四阶段：工具调用与 Agent 课程及实践顺序](第四阶段-工具调用与Agent课程及实践顺序.md)：参考 HF Agents Course、DeepSeek 和 LangGraph，从两个只读工具走向可观察的学习助手。
+- [第五阶段：评估与部署课程及实践顺序](第五阶段-评估与部署课程及实践顺序.md)：参考 Datawhale、LlamaIndex 与官方部署文档，建立评估报告、本机服务和版本恢复流程。
 
 ## 如何记录
 

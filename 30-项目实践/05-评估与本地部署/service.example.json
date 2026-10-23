@@ -1,0 +1,8 @@
+{
+  "corpus": "../03-RAG知识库问答/examples/notes",
+  "index": ".local/service/index-v1.json",
+  "log": ".local/service/events.jsonl",
+  "port": 8765,
+  "chunk_lines": 8,
+  "overlap_lines": 2
+}
