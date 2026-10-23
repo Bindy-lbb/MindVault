@@ -1,0 +1,25 @@
+# 每台设备的界面、插件和账户设置不进入仓库；仅同步基础文件与模板设置。
+.obsidian/*
+!.obsidian/app.json
+!.obsidian/templates.json
+.trash/
+
+# 本地环境、凭据和可重建的 AI 索引。
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.local/
+.cache/
+
+# 开发依赖和系统临时文件。
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
