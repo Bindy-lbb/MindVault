@@ -2,7 +2,7 @@
 
 [返回首页](../README.md)
 
-远端仓库：[Bindy-lbb/MindVault](https://github.com/Bindy-lbb/MindVault)（私有，登录有权限的 GitHub 账户后查看）。
+远端仓库：[Bindy-lbb/MindVault](https://github.com/Bindy-lbb/MindVault)（公开，可直接阅读和克隆；推送修改仍需写入权限）。
 
 本地文件夹：`E:\my-projects\MindVault`。
 

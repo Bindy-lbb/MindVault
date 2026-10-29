@@ -11,7 +11,7 @@ MindVault 是面向 AI 入门与应用开发的个人学习知识库，使用 **
 
 目前包含 **68 张知识卡片、6 份课程指南、6 个项目、16 个实践入口**。核心概念在库内给出通俗解释、完整例子、输入输出、自测与参考答案，外部教程用于溯源和深入阅读。
 
-仓库：[Bindy-lbb/MindVault](https://github.com/Bindy-lbb/MindVault)（私有）
+仓库：[Bindy-lbb/MindVault](https://github.com/Bindy-lbb/MindVault)（公开）
 
 **快速入口：**[学习总导航](学习总导航.md) · [个人学习地图](学习地图.md) · [知识卡片](10-知识卡片/README.md) · [项目实践](30-项目实践/README.md) · [学习看板说明](40-工具手册/学习状态与Bases看板.md)
 
@@ -46,7 +46,11 @@ MindVault 是面向 AI 入门与应用开发的个人学习知识库，使用 **
 4. 打开 [我的第一篇学习笔记](00-收集箱/我的第一篇学习笔记.md)，记录今天的收获。
 5. 学习结束后，可以对我说“帮我提交 MindVault”，或按 [GitHub 同步指南](40-工具手册/GitHub同步指南.md) 提交并推送。
 
-已有本地文件夹时，直接用 Obsidian 打开 `E:\my-projects\MindVault`。换电脑时，先用自己的 GitHub 账号克隆私有仓库，再把克隆后的文件夹作为 Obsidian 仓库打开。GitHub 可以直接阅读 Markdown；`.base` 学习看板在 Obsidian 中使用。
+已有本地文件夹时，直接用 Obsidian 打开 `E:\my-projects\MindVault`。首次使用或换电脑时，先克隆仓库，再把克隆后的文件夹作为 Obsidian 仓库打开。GitHub 可以直接阅读 Markdown；`.base` 学习看板在 Obsidian 中使用。
+
+```sh
+git clone https://github.com/Bindy-lbb/MindVault.git
+```
 
 运行代码前先看[实践运行约定与排错](40-工具手册/实践运行约定与排错.md)。主线各阶段都有无需模型账户的入门操作；真实 API 调用需要自行配置账户与密钥，语义检索、本地模型和真实微调选修还需要相应依赖或模型文件。
 
@@ -79,7 +83,7 @@ MindVault 是面向 AI 入门与应用开发的个人学习知识库，使用 **
 | --- | --- |
 | Markdown | 保存知识卡片、学习路线、实践步骤和复盘，方便迁移与程序读取 |
 | Obsidian 与 Bases | 本地阅读、编辑、关联笔记，按学习状态查看内容 |
-| Git 与 GitHub 私有仓库 | 保存修改历史、备份内容，按需提交并同步 |
+| Git 与 GitHub 公开仓库 | 保存修改历史、备份与分享内容，按需提交并同步 |
 | Python | 运行配套示例；基础路径以标准库实验为主，选修按项目配置依赖 |
 
 笔记阅读与管理不依赖数据库或常驻服务器。配套代码已提供 RAG、Agent、评估和本机检索服务等教学实验，默认从明确的示例资料开始；整个知识库的常驻 AI 问答、自动写回、网站展示和自动 Git 同步尚未配置。`mock`、`fixture`、`scripted` 等模拟结果会明确标注，真实模型效果需要实际运行后记录。
