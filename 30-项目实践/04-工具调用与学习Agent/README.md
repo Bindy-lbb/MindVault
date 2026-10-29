@@ -1,7 +1,10 @@
 ---
 created: 2026-10-23
-status: 待实践
+status: "待实践"
 tags: [项目实践, Agent, 工具调用]
+type: "项目实践"
+stage: "04 工具与Agent"
+title: "项目 04：工具调用与学习 Agent"
 ---
 
 # 项目 04：工具调用与学习 Agent

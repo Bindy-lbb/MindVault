@@ -1,9 +1,12 @@
 ---
 created: 2026-10-23
-status: 待自己复现
+status: "待实践"
 tags:
   - 项目实践
   - 编程基础
+type: "项目实践"
+stage: "01 基础与Python"
+title: "项目 01：Markdown 读取与 JSON 保存"
 ---
 
 # 项目 01：Markdown 读取与 JSON 保存

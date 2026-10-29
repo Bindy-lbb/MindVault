@@ -1,7 +1,9 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 tags: [知识卡片, Agent, MCP]
+type: "知识卡片"
+stage: "04 工具与Agent"
 ---
 
 # MCP 与工具接入

@@ -1,8 +1,10 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
 tags: [知识卡片, API入门]
+type: "知识卡片"
+stage: "02 模型API"
 ---
 
 # HTTP 请求与响应

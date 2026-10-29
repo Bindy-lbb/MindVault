@@ -1,8 +1,10 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://github.com/datawhalechina/llm-universe"
 tags: [知识卡片, API入门]
+type: "知识卡片"
+stage: "02 模型API"
 ---
 
 # SDK 与 HTTP 调用

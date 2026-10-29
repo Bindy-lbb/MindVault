@@ -1,8 +1,10 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://api-docs.deepseek.com/zh-cn/"
 tags: [知识卡片, API入门]
+type: "知识卡片"
+stage: "02 模型API"
 ---
 
 # API 密钥与环境变量

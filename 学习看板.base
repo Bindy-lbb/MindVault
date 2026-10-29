@@ -1,0 +1,99 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'note.status'
+    - or:
+        - 'file.inFolder("00-收集箱")'
+        - 'file.inFolder("10-知识卡片")'
+        - 'file.inFolder("20-课程笔记")'
+        - 'file.inFolder("30-项目实践")'
+        - 'file.inFolder("50-学习复盘")'
+formulas:
+  笔记: 'file.asLink(if(note.title, note.title, file.name))'
+properties:
+  formula.笔记:
+    displayName: 笔记
+  note.status:
+    displayName: 学习状态
+  note.stage:
+    displayName: 学习阶段
+  note.type:
+    displayName: 笔记类型
+  file.mtime:
+    displayName: 文件修改时间
+views:
+  - type: table
+    name: 待学习
+    filters: 'note.status == "待学习"'
+    groupBy:
+      property: note.stage
+      direction: ASC
+    order:
+      - formula.笔记
+      - note.status
+      - note.type
+      - note.stage
+  - type: table
+    name: 待实践
+    filters: 'note.status == "待实践"'
+    groupBy:
+      property: note.stage
+      direction: ASC
+    order:
+      - formula.笔记
+      - note.status
+      - note.type
+      - note.stage
+  - type: table
+    name: 进行中
+    filters:
+      or:
+        - 'note.status == "学习中"'
+        - 'note.status == "实践中"'
+    order:
+      - formula.笔记
+      - note.status
+      - note.stage
+      - note.type
+  - type: kanban
+    name: 状态看板
+    groupBy:
+      property: note.status
+      direction: ASC
+    groupOrder:
+      - 待整理
+      - 待学习
+      - 学习中
+      - 待实践
+      - 实践中
+      - 已完成
+    order:
+      - formula.笔记
+      - note.stage
+      - note.type
+  - type: table
+    name: 待整理
+    filters: 'note.status == "待整理"'
+    order:
+      - formula.笔记
+      - note.status
+      - note.stage
+      - note.type
+  - type: table
+    name: 已完成
+    filters: 'note.status == "已完成"'
+    order:
+      - formula.笔记
+      - note.stage
+      - note.type
+  - type: table
+    name: 全部学习笔记
+    groupBy:
+      property: note.stage
+      direction: ASC
+    order:
+      - formula.笔记
+      - note.status
+      - note.stage
+      - note.type
+      - file.mtime

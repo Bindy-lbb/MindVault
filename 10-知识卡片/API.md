@@ -1,13 +1,15 @@
 ---
 created: 2026-10-23
 updated: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://developer.mozilla.org/en-US/docs/Glossary/API"
 aliases:
   - 应用程序编程接口
 tags:
   - 知识卡片
   - 大模型入门
+type: "知识卡片"
+stage: "01 基础与Python"
 ---
 
 # API

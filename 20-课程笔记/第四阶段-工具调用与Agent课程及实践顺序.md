@@ -1,7 +1,9 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 tags: [课程笔记, 学习资源, Agent]
+type: "课程笔记"
+stage: "04 工具与Agent"
 ---
 
 # 第四阶段：工具调用与 Agent 课程及实践顺序

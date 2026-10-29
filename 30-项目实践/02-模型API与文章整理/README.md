@@ -1,7 +1,10 @@
 ---
 created: 2026-10-23
-status: 待自己复现
+status: "待实践"
 tags: [项目实践, API入门]
+type: "项目实践"
+stage: "02 模型API"
+title: "项目 02：模型 API 与文章整理"
 ---
 
 # 项目 02：模型 API 与文章整理

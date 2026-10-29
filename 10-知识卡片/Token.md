@@ -1,13 +1,15 @@
 ---
 created: 2026-10-23
 updated: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://huggingface.co/docs/transformers/en/tokenizer_summary"
 aliases:
   - 词元
 tags:
   - 知识卡片
   - 大模型入门
+type: "知识卡片"
+stage: "01 基础与Python"
 ---
 
 # Token

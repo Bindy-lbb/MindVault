@@ -1,7 +1,9 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 tags: [课程笔记, 学习资源, API入门]
+type: "课程笔记"
+stage: "02 模型API"
 ---
 
 # 第二阶段：模型 API 课程与实践顺序

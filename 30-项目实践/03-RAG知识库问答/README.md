@@ -1,7 +1,10 @@
 ---
 created: 2026-10-23
-status: 待实践
+status: "待实践"
 tags: [项目实践, RAG]
+type: "项目实践"
+stage: "03 RAG"
+title: "项目 03：RAG 知识库问答"
 ---
 
 # 项目 03：RAG 知识库问答

@@ -1,13 +1,15 @@
 ---
 created: 2026-10-23
 updated: 2026-10-23
-status: 待读
+status: "待学习"
 source: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"
 aliases:
   - JavaScript Object Notation
 tags:
   - 知识卡片
   - 编程基础
+type: "知识卡片"
+stage: "01 基础与Python"
 ---
 
 # JSON

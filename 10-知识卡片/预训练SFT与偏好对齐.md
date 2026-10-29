@@ -1,7 +1,9 @@
 ---
 created: 2026-10-23
-status: 待读
+status: "待学习"
 tags: [知识卡片, 模型进阶]
+type: "知识卡片"
+stage: "06 进阶"
 ---
 
 # 预训练SFT与偏好对齐
