@@ -1,5 +1,6 @@
 ---
 created: 2026-10-23
+updated: 2026-10-29
 status: "待学习"
 tags: [课程笔记, 学习资源, API入门]
 type: "课程笔记"
@@ -10,20 +11,28 @@ stage: "02 模型API"
 
 [返回首页](../README.md) · [学习地图](../学习地图.md) · [项目 02](../30-项目实践/02-模型API与文章整理/README.md)
 
-来源核查日期：2026-10-23。目标是先解释一份请求，再完成一次模型调用，最后把文章整理为有来源、有核对步骤的笔记草稿。
-
-## 参考资料怎样分工
-
-| 资料 | 用在哪一步 | 条件、语言与成本 |
-| --- | --- | --- |
-| [Datawhale llm-universe](https://github.com/datawhalechina/llm-universe)，第一部分第 2 章“使用 LLM API 开发应用” | 作为主线，学习调用思路和提示词 | 中文公开教程，含 Notebook；需要第一阶段的基础 Python，实践 API 费用按所选服务核实 |
-| [DeepSeek 首次调用](https://api-docs.deepseek.com/zh-cn/)与官方专题指南 | 核对当前模型名、字段、错误和 JSON 输出 | 有中文文档；真实调用需要自己的 API Key 与可用账户，计费以当前规则为准 |
-| [MDN HTTP 概述](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) | 补充请求、响应与客户端服务端关系 | 此处链接为英文文档，可公开阅读 |
-| [Python urllib.request](https://docs.python.org/zh-cn/3.13/library/urllib.request.html) | 对照标准库网络调用代码 | 中文官方文档；项目离线练习不需要安装第三方包 |
-
-本项目用 DeepSeek 作为一个具体教学接口。通用概念可以迁移，模型名、认证方式与字段支持要随目标服务重新核对。Datawhale 中其他厂商或 SDK 示例，按原教程对应版本阅读。
+来源核查日期：2026-10-29。目标是先解释一份请求，再完成一次模型调用，最后把文章整理为有来源、有核对步骤的笔记草稿。
 
 ## 推荐阅读与实践顺序
+
+### 新手先读库内讲解
+
+八张卡片已补充详细解释、请求示例、输入输出、常见疑问和练习答案。以配套文章《从记录到复习》为例，理解从正文到待核对草稿的完整流程，不必跳外部教程才能看懂核心内容。
+
+| 顺序 | 知识卡片 | 读完应能回答 |
+| --- | --- | --- |
+| 1 | [HTTP请求与响应](../10-知识卡片/HTTP请求与响应.md) | 请求头、请求体和响应怎样对应？ |
+| 2 | [SDK与HTTP调用](../10-知识卡片/SDK与HTTP调用.md) | SDK 封装了什么，仍需核对什么？ |
+| 3 | [API密钥与环境变量](../10-知识卡片/API密钥与环境变量.md) | 认证值怎样在本地交给程序？ |
+| 4 | [消息角色与多轮对话](../10-知识卡片/消息角色与多轮对话.md) | 历史和正文怎样进入消息列表？ |
+| 5 | [模型调用参数](../10-知识卡片/模型调用参数.md) | 上限、模式和实际用量怎样区分？ |
+| 6 | [结构化输出与校验](../10-知识卡片/结构化输出与校验.md) | 字段和引文通过后还要检查什么？ |
+| 7 | [超时限流与重试](../10-知识卡片/超时限流与重试.md) | 哪些错误应修改，哪些可稍后重试？ |
+| 8 | [Token用量与调用成本](../10-知识卡片/Token用量与调用成本.md) | 怎样保留真实用量并计算估算费用？ |
+
+### 再按实践难度动手
+
+先 hello preview 查看请求，再 hello mock 检查保存，然后 summarize mock 练字段和原文依据核对。mock 只支持配套示例，不会随提示变化重新生成；有自己的账户和凭据后再按需 live。正文限制是字符数，输出限制与真实 Token 用量分别记录。
 
 | 顺序 | 知识卡片 | 要完成什么 |
 | --- | --- | --- |
@@ -42,13 +51,6 @@ stage: "02 模型API"
 
 代码检查覆盖预览、模拟、响应结构和常见失败；真实账户认证、余额、模型质量与实际费用需自行调用后验证。详见 [运行检查记录](../30-项目实践/02-模型API与文章整理/运行检查记录.md)。
 
-## 当前接口要点
-
-- 官方当前模型名使用 `deepseek-flash`；未来运行前打开 [模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)复核。
-- 官方支持思考模式，本项目明确关闭，先学习简单的非流式调用。[模式说明](https://api-docs.deepseek.com/zh-cn/guides/thinking_mode/)
-- JSON 输出需要字段设置和提示词共同表达要求，并处理空内容和截断。[JSON 指南](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)
-- 多轮对话需要按接口规则提供历史；本项目先做单轮。[多轮指南](https://api-docs.deepseek.com/zh-cn/guides/multi_round_chat/)
-
 ## 我的完成标准
 
 - [ ] 能解释请求、认证、消息、返回内容和用量分别在哪里。
@@ -59,3 +61,21 @@ stage: "02 模型API"
 - [ ] 按 [评估记录模板](../30-项目实践/02-模型API与文章整理/评估记录模板.md)记录三篇文章的结果。
 
 读懂并验证后，再把草稿整理进课程笔记。个人任务保持待勾选，资料准备完成不等于已经掌握或实测模型。
+
+## 外部资料与延伸阅读（选读）
+
+| 资料 | 用在哪一步 | 条件、语言与成本 |
+| --- | --- | --- |
+| [Datawhale llm-universe](https://github.com/datawhalechina/llm-universe)，第一部分第 2 章“使用 LLM API 开发应用” | 作为主线，学习调用思路和提示词 | 中文公开教程，含 Notebook；需要第一阶段的基础 Python，实践 API 费用按所选服务核实 |
+| [DeepSeek 首次调用](https://api-docs.deepseek.com/zh-cn/)与官方专题指南 | 核对当前模型名、字段、错误和 JSON 输出 | 有中文文档；真实调用需要自己的 API Key 与可用账户，计费以当前规则为准 |
+| [MDN HTTP 概述](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) | 补充请求、响应与客户端服务端关系 | 此处链接为英文文档，可公开阅读 |
+| [Python urllib.request](https://docs.python.org/zh-cn/3.13/library/urllib.request.html) | 对照标准库网络调用代码 | 中文官方文档；项目离线练习不需要安装第三方包 |
+
+本项目用 DeepSeek 作为一个具体教学接口。通用概念可以迁移，模型名、认证方式与字段支持要随目标服务重新核对。Datawhale 中其他厂商或 SDK 示例，按原教程对应版本阅读。
+
+### 当前接口与专题文档
+
+- 官方当前模型名使用 `deepseek-flash`；未来运行前打开 [模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)复核。
+- 官方支持思考模式，本项目明确关闭，先学习简单的非流式调用。[模式说明](https://api-docs.deepseek.com/zh-cn/guides/thinking_mode/)
+- JSON 输出需要字段设置和提示词共同表达要求，并处理空内容和截断。[JSON 指南](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)
+- 多轮对话需要按接口规则提供历史；本项目先做单轮。[多轮指南](https://api-docs.deepseek.com/zh-cn/guides/multi_round_chat/)
