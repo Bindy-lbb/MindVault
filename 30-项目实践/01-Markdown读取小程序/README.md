@@ -19,12 +19,15 @@ title: "项目 01：Markdown 读取与 JSON 保存"
 
 这是为 MindVault 自编的教学项目，参考 Python 官方文件、路径和 JSON 文档，不是课程作业的标准答案。
 
+先看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)，明确 Python 与 PowerShell 的区别、输出位置和失败记录方式。
+
 ## 先运行一次
 
 在 PowerShell 中逐条运行：
 
 ```powershell
 Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 python --version
 python '.\30-项目实践\01-Markdown读取小程序\read_note.py'
 ```

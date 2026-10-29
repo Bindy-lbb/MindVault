@@ -4,9 +4,13 @@
 
 先按[循环卡片](../../10-知识卡片/Agent循环与停止条件.md)理解次数预算。本页从仓库根目录运行，不要求先安装框架。
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：从仓库根目录开始，首次代码块设置会话变量；新终端需重新设置。输出使用新名称，预期失败不记作成功。
+
 ## 1. 用预写响应看懂循环
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 $agentScript = '.\30-项目实践\04-工具调用与学习Agent\study_agent.py'
 python $agentScript --mode scripted --scenario success --output '.local/agent/scripted-v1'
 python $agentScript --mode scripted --scenario bad_arguments --output '.local/agent/recovery-v1'

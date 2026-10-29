@@ -2,11 +2,15 @@
 
 [项目首页](README.md) · [实践二](实践二-文章整理工具.md)
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：首段从仓库根目录开始；新终端需重新设置会话变量，输出使用新名称。
+
 ## 第一步：解释请求
 
 在 MindVault 根目录执行：
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 python '.\30-项目实践\02-模型API与文章整理\model_api.py' hello --mode preview
 ```
 

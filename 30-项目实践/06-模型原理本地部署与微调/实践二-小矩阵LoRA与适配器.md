@@ -4,6 +4,8 @@
 
 目标：真正更新一对低秩矩阵，观察基座保持不变、增量可以保存重载。这里只处理二维数值，不是语言模型微调，也不是 QLoRA。
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：从仓库根目录开始，首次代码块设置会话变量；新终端需重新设置。输出使用新名称，预期失败不记作成功。
+
 ## 1. 先看模型与数据
 
 W0 为2×2单位矩阵，rank=1，alpha=1。A 为1×2，B 为2×1；实际代码用长度2列表表示。预测为 `W0x + B(Ax)`。目标映射是自写的 `y=[2x0+2x1, 2x0+5x1]`。
@@ -13,6 +15,8 @@ W0 为2×2单位矩阵，rank=1，alpha=1。A 为1×2，B 为2×1；实际代码
 ## 2. 训练并看报告
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 $advanced = '.\30-项目实践\06-模型原理本地部署与微调'
 python "$advanced\toy_lora.py" train --steps 400 --learning-rate 0.03 --output '.local/advanced/toy-v1'
 ```
@@ -20,6 +24,8 @@ python "$advanced\toy_lora.py" train --steps 400 --learning-rate 0.03 --output '
 打开 report.json，比较 before/after 的 train_mse 和 validation_mse，观察 history。默认例子的目标恰好可以用 rank1 增量表示，误差下降很容易；这不代表真实大模型用少量数据也会得到类似结果。
 
 adapter.json 包含本库格式的 A、B、基座 ID 和基座矩阵。报告中的 base_frozen 对应本实现固定的 W0；不能把该文件交给 PEFT、Ollama 或真实模型。
+
+report.json 中 train_mse/validation_mse 是两维输出的均方误差：每个输入的两项误差平方相加，再除以 `2×样本数`。这是数值拟合误差，不是自然语言正确率。
 
 ## 3. 重载并预测
 
@@ -41,4 +47,4 @@ python "$advanced\toy_lora.py" train --steps 50 --learning-rate 0.01 --output '.
 
 - [ ] 能说明 A、B 与 W0 的形状与作用。
 - [ ] 保存、重载后得到一致预测。
-- [ ] 能解释玩具矩阵训练与真实 LoRA 的差异，再读[PEFT LoRA](https://huggingface.co/docs/peft/en/conceptual_guides/lora)。
+- [ ] 能解释玩具矩阵训练与真实 LoRA 的差异，再读[PEFT LoRA](https://huggingface.co/docs/peft/main/en/conceptual_guides/lora)。

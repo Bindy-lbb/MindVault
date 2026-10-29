@@ -4,6 +4,8 @@
 
 本页为选修：先理解已经能运行的工具和循环，再学习如何迁移。框架例子、真实模型效果与协议接入需要分别验证。
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：从仓库根目录开始，首次代码块设置会话变量；新终端需重新设置。输出使用新名称，预期失败不记作成功。
+
 ## 1. 选读框架教程
 
 打开 [LangGraph Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)，重点读：State 保存什么、node 执行什么、edge 决定怎样流转，以及工具调用后的继续/结束条件。
@@ -15,6 +17,8 @@
 从仓库根目录执行：
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 python -m venv '.local/agent-venv'
 $agentPython = '.\.local\agent-venv\Scripts\python.exe'
 & $agentPython -m pip install langgraph

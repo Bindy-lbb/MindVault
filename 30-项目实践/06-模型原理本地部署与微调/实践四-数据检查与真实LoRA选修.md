@@ -4,6 +4,8 @@
 
 本实践先检查数据，再按需在真实模型上训练。plan 无需依赖；train/evaluate 会加载模型，并可能联网下载权重。此次整理未执行真实训练，不把下面的选修流程标为已跑通。
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：从仓库根目录开始，首次代码块设置会话变量；新终端需重新设置。输出使用新名称，预期失败不记作成功。
+
 ## 1. 明确这次适配什么
 
 只学习把概念输出为“概念：…；一句话：…”的格式。示例20条全部为本库自写，train/validation/test 为12/4/4。数量很少，仅用于检查流程；基座可能已能完成任务，微调可能无收益或退步。
@@ -13,6 +15,8 @@
 ## 2. 只做数据与配置计划
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 $advanced = '.\30-项目实践\06-模型原理本地部署与微调'
 python "$advanced\lora_experiment.py" --mode plan --output '.local/advanced/lora-plan-v1'
 ```

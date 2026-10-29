@@ -37,10 +37,11 @@ def package(output, version, corpus):
     (output / "service.json").write_text(dump(config) + "\n", encoding="utf-8")
     instructions = ("# 本地教学发布包\n\n版本：" + version + "\n\n"
                     "在发布目录终端运行，或给 --config 传完整路径：\n\n"
-                    "```powershell\npython local_service.py index --config service.json\n"
-                    "python local_service.py serve --config service.json\n```\n\n"
+                    "```powershell\npython -B local_service.py index --config service.json\n"
+                    "python -B local_service.py serve --config service.json\n```\n\n"
                     "用另一个终端检查 http://127.0.0.1:8765/ready 。Ctrl+C 停止。\n\n"
                     "只提供本机关键词检索，不调用模型。先把发布包放到最终位置再建索引；不要复制旧索引。\n"
+                    "保留 -B 选项，避免 __pycache__ 造成清单外文件；运行数据只放 .local/。\n"
                     "重启可复用当前索引。资料变化时另建新版本与索引，保留旧版本用于恢复。\n"
                     "当前仅为本机学习服务，没有认证、HTTPS或生产进程管理。\n")
     (output / "START.md").write_text(instructions, encoding="utf-8")

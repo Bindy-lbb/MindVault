@@ -4,9 +4,13 @@
 
 目标：确认本机真实加载了选定模型，再调用它、核对输出和资源。这项可以先看预览与固定响应，真实模型运行按自己的条件选择。
 
+运行前可看[统一运行约定与排错](../../40-工具手册/实践运行约定与排错.md)：从仓库根目录开始，首次代码块设置会话变量；新终端需重新设置。输出使用新名称，预期失败不记作成功。
+
 ## 1. 先预览，不安装模型
 
 ```powershell
+Set-Location 'E:\my-projects\MindVault'
+$env:PYTHONUTF8 = '1'
 $advanced = '.\30-项目实践\06-模型原理本地部署与微调'
 python "$advanced\ollama_client.py" --mode preview
 python "$advanced\ollama_client.py" --mode fixture --output '.local/advanced/ollama-fixture-v1'
