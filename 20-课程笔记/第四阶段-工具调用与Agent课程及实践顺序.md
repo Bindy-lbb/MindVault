@@ -1,5 +1,6 @@
 ---
 created: 2026-10-23
+updated: 2026-10-29
 status: "待学习"
 tags: [课程笔记, 学习资源, Agent]
 type: "课程笔记"
@@ -10,19 +11,32 @@ stage: "04 工具与Agent"
 
 [学习地图](../学习地图.md) · [知识卡片](../10-知识卡片/README.md) · [项目 04](../30-项目实践/04-工具调用与学习Agent/README.md)
 
-目标：从“能查笔记”走到“能选择工具、利用反馈生成有依据的复习题”，并能解释工具实际做了什么、为什么结束。来源核查日期：2026-10-23。
-
-## 三份主参考
-
-| 资料 | 第一步 | 作品与验收 | 条件、语言与费用 |
-| --- | --- | --- | --- |
-| [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/zh-CN/unit0/introduction)，第 1 单元 | 按“什么是智能体 → 什么是工具 → 思考/行动/观察循环”阅读 | 能画出本项目的两种流程，解释一次调用和返回；后续再选读第 2 单元框架 | 中文版公开可读，需基础 Python 和模型 API 知识；课程中的推理服务、托管空间或算力成本分别核对；历史认证截止日不是当前招生安排 |
-| [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/)与[Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/) | 先看非思考模式中的工具定义、assistant 调用与 tool 回传 | 找到名称、arguments、调用 ID、实际工具结果；准备好后自行运行 live | 当前工具专题为英文官方文档；阅读公开，真实调用需自己的账户/Key，按当时计费；本项目用标准库 HTTP，不要求安装 SDK |
-| [LangGraph Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents) | 看固定工作流与 Agent 的分工，再看 State、节点与边 | 在选修中把同一组搜索/读取函数放进两节点图，确认行为仍是固定工作流 | 英文官方教程；本库提供无模型的最小图示例，需要单独安装 langgraph；原教程的模型部分可能另有 API 成本 |
-
-让 AI 帮你解释每个函数、拆解报错或改一条工具描述；调用是否真实执行、返回是否正确、引文是否支持结论由自己检查。公开教程与实践服务费用分开考虑，不承诺免费额度。
+目标：从“能查笔记”走到“能选择工具、利用反馈生成有依据的复习题”，并能解释工具实际做了什么、为什么结束。来源核查日期：2026-10-29。
 
 ## 阅读与动手顺序
+
+### 新手先读库内讲解
+
+十张卡片都包含通俗解释、MindVault 示例、输入输出、常见疑问、练习答案和实践入口。先读本库即可建立完整认识，外部教程放在文末选读。
+
+贯穿任务：**根据 API 密钥笔记生成一条复习题，并给出答案和逐字依据。**重点分清模型提出请求、程序执行工具和真实返回结果。
+
+| 顺序 | 知识卡片 | 读完应能回答 |
+| --- | --- | --- |
+| 1 | [Agent与固定工作流](../10-知识卡片/Agent与固定工作流.md) | 谁决定下一步？五种模式有何不同？ |
+| 2 | [工具调用与FunctionCalling](../10-知识卡片/工具调用与FunctionCalling.md) | 模型的请求怎样变成一次真实行动？ |
+| 3 | [工具描述与参数Schema](../10-知识卡片/工具描述与参数Schema.md) | 字段、类型、范围和权限各检查什么？ |
+| 4 | [工具结果与消息状态](../10-知识卡片/工具结果与消息状态.md) | 调用 ID 怎样配对？结果如何进入下一轮？ |
+| 5 | [Agent循环与停止条件](../10-知识卡片/Agent循环与停止条件.md) | 轮数和工具次数怎么数？为何结束不等于成功？ |
+| 6 | [工具错误与恢复](../10-知识卡片/工具错误与恢复.md) | 哪些错误能改参数，哪些需要停止？ |
+| 7 | [Agent权限与提示注入](../10-知识卡片/Agent权限与提示注入.md) | 笔记里的要求为何不等于用户授权？ |
+| 8 | [Agent运行轨迹与评估](../10-知识卡片/Agent运行轨迹与评估.md) | 如何用轨迹核对题目、依据、成本和失败？ |
+| 9 | [Agent记忆与上下文](../10-知识卡片/Agent记忆与上下文.md) | 保存日志为何不等于模型永久记住？ |
+| 10 | [MCP与工具接入](../10-知识卡片/MCP与工具接入.md) | 应用、客户端与服务各负责什么？ |
+
+### 再按实践难度动手
+
+先做无需模型的工具、固定流程和 scripted；preview 只看初始请求。准备好自己的账户后再按需 live。LangGraph 和 MCP 是后续选修，阅读卡片不需要先安装。
 
 | 顺序 | 知识卡片 | 动手内容 |
 | --- | --- | --- |
@@ -38,11 +52,6 @@ stage: "04 工具与Agent"
 
 当前默认用第三阶段五篇自写资料，不读取全库；模型工具只有搜索与读取。结果由本地程序另存新目录，不提供模型写笔记、发消息、Shell 或 GitHub 提交工具。
 
-## 补充阅读
-
-- [Anthropic：Building effective agents](https://www.anthropic.com/research/building-effective-agents)：用于理解何时采用简单工作流。原文发表于 2024-12，页面已提醒工具生态发生变化；不照搬其中历史 SDK 配置。
-- [MCP 官方介绍](https://modelcontextprotocol.io/docs/getting-started/intro)与[架构](https://modelcontextprotocol.io/docs/learn/architecture)：需要跨客户端复用工具时再学，当前项目没有启动 MCP 服务。
-
 ## 我的完成标准
 
 - [ ] 亲自执行两个工具，找到对应文件与行号。
@@ -54,3 +63,18 @@ stage: "04 工具与Agent"
 - [ ] 能描述哪些内容发给模型、哪些只保存在本地，知道何时需要增加动作确认或幂等处理。
 
 资料与代码准备不等于自己已学会。当前实际检查范围见[运行检查记录](../30-项目实践/04-工具调用与学习Agent/运行检查记录.md)。
+
+## 外部资料与延伸阅读（选读）
+
+| 资料 | 第一步 | 作品与验收 | 条件、语言与费用 |
+| --- | --- | --- | --- |
+| [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/zh-CN/unit0/introduction)，第 1 单元 | 按“什么是智能体 → 什么是工具 → 思考/行动/观察循环”阅读 | 能画出本项目的两种流程，解释一次调用和返回；后续再选读第 2 单元框架 | 中文版公开可读，需基础 Python 和模型 API 知识；课程中的推理服务、托管空间或算力成本分别核对；历史认证截止日不是当前招生安排 |
+| [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/)与[Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/) | 先看非思考模式中的工具定义、assistant 调用与 tool 回传 | 找到名称、arguments、调用 ID、实际工具结果；准备好后自行运行 live | 当前工具专题为英文官方文档；阅读公开，真实调用需自己的账户/Key，按当时计费；本项目用标准库 HTTP，不要求安装 SDK |
+| [LangGraph Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents) | 看固定工作流与 Agent 的分工，再看 State、节点与边 | 在选修中把同一组搜索/读取函数放进两节点图，确认行为仍是固定工作流 | 英文官方教程；本库提供无模型的最小图示例，需要单独安装 langgraph；原教程的模型部分可能另有 API 成本 |
+
+让 AI 帮你解释每个函数、拆解报错或改一条工具描述；调用是否真实执行、返回是否正确、引文是否支持结论由自己检查。公开教程与实践服务费用分开考虑，不承诺免费额度。
+
+### 其他选读
+
+- [Anthropic：Building effective agents](https://www.anthropic.com/research/building-effective-agents)：用于理解何时采用简单工作流。原文发表于 2024-12，页面已提醒工具生态发生变化；不照搬其中历史 SDK 配置。
+- [MCP 官方介绍](https://modelcontextprotocol.io/docs/getting-started/intro)与[架构](https://modelcontextprotocol.io/docs/learn/architecture)：需要跨客户端复用工具时再学，当前项目没有启动 MCP 服务。

@@ -4,6 +4,7 @@ status: "待学习"
 tags: [知识卡片, Agent]
 type: "知识卡片"
 stage: "04 工具与Agent"
+updated: 2026-10-29
 ---
 
 # 工具描述与参数 Schema
@@ -12,35 +13,89 @@ stage: "04 工具与Agent"
 
 ## 一句话解释
 
-**工具描述告诉模型何时使用；参数 Schema 告诉模型应该填写哪些字段和类型。**像表单的用途说明与填写规则。
+**工具描述解释“什么时候用”，参数 Schema 规定“这张表怎么填”。**Schema 可以读作“结构规则”：字段名、数据类型、必填项和取值范围。
 
-## 本项目的约定
+## 为什么需要它
 
-`search_notes(query, top_k)` 搜索当前允许的资料；`read_note(note_id, start_line, end_line)` 读取指定笔记行。note_id 必须来自本次资料清单，例如 `01-API配置.md`，不是任意磁盘路径。
+模型只看见一个模糊的 `process`，很难知道它会做什么。`search_notes` 配上“搜索允许的 Markdown，返回 ID、行号和摘要”的说明，就有明确用途。
+
+即使模型知道用途，也可能把数字写成文字、漏字段或传入不存在的文件。说明帮助模型选择，Schema 帮助约定格式，本地检查负责真正拒绝无效请求。三者配合，不能只靠一句“请正确调用”。
+
+## 用 MindVault 走一遍
+
+搜索需要两项：`query` 是关键词字符串，`top_k` 是最多要返回的片段数。本库允许 1–3 条，不是要求模型固定找到三条。
 
 ```json
-{"type":"object","properties":{"query":{"type":"string"},"top_k":{"type":"integer","minimum":1,"maximum":3}},"required":["query","top_k"],"additionalProperties":false}
+{
+  "type": "object",
+  "properties": {
+    "query": {"type": "string"},
+    "top_k": {"type": "integer", "minimum": 1, "maximum": 3}
+  },
+  "required": ["query", "top_k"],
+  "additionalProperties": false
+}
 ```
 
-这是本库搜索参数的简化示例。名称要具体，描述交代适用场景、限制和返回内容。[工具设计参考](https://huggingface.co/learn/agents-course/zh-CN/unit1/tools)
+逐项读：最外层必须是对象；`properties` 列出允许字段；`required` 表示两项都要提供；`additionalProperties: false` 表示不接受自加字段。`integer` 是整数，带引号的 `"3"` 是字符串。
 
-## 声明之后仍要检查
+| 参数对象 | 本库结果 | 原因 |
+| --- | --- | --- |
+| `{"query":"API 密钥","top_k":3}` | 通过参数检查 | 类型和范围正确 |
+| `{"query":"API 密钥","top_k":"3"}` | invalid_arguments | 数字被写成字符串 |
+| `{"query":"API 密钥","top_k":10}` | invalid_arguments | 超过上限 |
+| `{"query":"API 密钥"}` | invalid_arguments | 缺少必填字段 |
+| `{"query":"API","top_k":1,"shell":"..."}` | invalid_arguments | 多了不允许的字段 |
 
-服务端支持哪些 Schema 字段要按接口核对；本项目没有开启厂商严格模式，而是在本地再验证字段、类型与范围。字符串 `"3"` 不是整数 3，额外字段也会拒绝。
+读取工具另需 `note_id`、`start_line`、`end_line`。例如读取第 4–5 行时，行数是 `5-4+1=2`。起止行均包含；最多 60 行且不超过 6000 字符，还不能超出文件末尾。
 
-DeepSeek API 文档提醒模型可能生成无效 JSON 或 Schema 之外的参数。[接口依据](https://api-docs.deepseek.com/api/create-chat-completion/)
+## 每一步的输入输出
+
+| 步骤 | 输入 | 输出 |
+| --- | --- | --- |
+| 设计说明 | 工具用途与限制 | 名称、描述、参数 Schema |
+| 模型填写 | 任务与工具声明 | arguments 字符串 |
+| JSON 解析 | 参数字符串 | 对象，或解析错误 |
+| 本地验证 | 对象、范围与资料清单 | 接受或明确错误 |
+| 执行 | 合法参数 | 原文或搜索候选 |
+
+本地还检查搜索词去掉两端空白后为 1–300 字符；声明未表达的业务规则也需要代码实现。
+
+## 常见疑问
+
+**合法 JSON 就能用吗？**不能。`{"top_k":"3"}` 是合法 JSON，却既缺少 query 又类型不对。
+
+**Schema 会自动检查权限吗？**不会。它能描述字符串，却不能独自证明 note_id 属于当前允许的资料清单。读取范围必须由运行程序核对。
+
+**本库开启了严格输出模式吗？**没有。这里依靠本地字段、类型与范围检查，不假设服务端总会生成合法参数。未来使用厂商严格模式，也仍需保留业务权限检查。
 
 ## 小练习与自测
+
+**题目：**`start_line=8,end_line=1` 两个值都是正整数，为什么仍不能执行？
+
+**参考答案：**跨字段关系不对，起始行应不大于结束行。单字段类型正确只是第一层要求。
+
+**练习答案提示：**运行 `bad_arguments` 情节，第一次 top_k 为字符串而被拒绝，第二次改为整数才搜索。观察参数修复，不把失败那次算成成功搜索。
+
+### 动手记录
 
 - [ ] 找到脚本中的工具描述，改写成更明确的一句话再比较结果。
 - [ ] 在脚本模拟中观察参数不合法时有没有执行工具。
 
-**问题：**参数是合法 JSON，就可以执行了吗？
+## 本库实现与实践入口
 
-**参考要点：**还要符合字段、类型、数值范围、资料范围与当前权限。
+对照 `SEARCH_ARGS`、`READ_ARGS` 和 `NoteTools.execute()`。字段声明与执行检查要一起读。当前检查还特意让布尔值不能冒充整数；Python 中 True 与整数有特殊关系，直接检查实际类型可以避开这个坑。
 
-## 来源与相关笔记
+[项目入口](../30-项目实践/04-工具调用与学习Agent/README.md) · [实现代码](../30-项目实践/04-工具调用与学习Agent/study_agent.py) · [实践一：工具与固定流程](../30-项目实践/04-工具调用与学习Agent/实践一-两个工具与固定工作流.md) · [实践二：循环与调用](../30-项目实践/04-工具调用与学习Agent/实践二-Agent循环与真实工具调用.md) · [实践三：框架与MCP](../30-项目实践/04-工具调用与学习Agent/实践三-LangGraph与MCP接入设计.md) · [评估模板](../30-项目实践/04-工具调用与学习Agent/评估记录模板.md)
 
-以上 HF 与 DeepSeek 官方文档。核查：2026-10-23。字段和本地限制为本项目设计。
+阅读和离线练习不需要 API Key；live 才调用外部模型并可能产生费用。示例原文见[API 配置笔记](../30-项目实践/03-RAG知识库问答/examples/notes/01-API配置.md)。
 
-[JSON](JSON.md) · [结构化输出与校验](结构化输出与校验.md) · [Agent权限与提示注入](Agent权限与提示注入.md)
+## 来源与延伸阅读
+
+[HF 工具教程](https://huggingface.co/learn/agents-course/zh-CN/unit1/tools)：用途和输入描述。[DeepSeek Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/)：工具参数声明及生成参数的校验要求。具体边界数值来自本库实现。
+
+核查日期：2026-10-29。外部资料用于核对概念与协议，核心解释已写在本页。生活类比、表格与 MindVault 示例为本库整理；脚本演示不代表真实模型效果实测。
+
+## 相关笔记与下一步
+
+[下一张：工具结果与消息状态](工具结果与消息状态.md) · [RAG 检索增强生成](RAG检索增强生成.md) · [上下文](上下文.md) · [第四阶段阅读顺序](../20-课程笔记/第四阶段-工具调用与Agent课程及实践顺序.md)
